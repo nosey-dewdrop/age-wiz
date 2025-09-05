@@ -1,0 +1,18 @@
+# Virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Output files
+output/
+*.pkl
+
+# macOS
+.DS_Store
+
+# Personal photos (privacy)
+training/
+validation/
+*.jpg
+*.jpeg
+*.pnggit push -f origin main
