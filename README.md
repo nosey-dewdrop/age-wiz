@@ -18,15 +18,10 @@ As I am tall, have pretty skin, pretty eyes and a pretty hair and a brilliant mi
 
 So after computer science, I'll be in medical school and not a single person will be able to guess my age. Because I hacked my telomeres. Yes I am Deadpool. I am cancer, just like my tumors my other cells are recurring too!!!!!!!!!!!!! Henceforth, I will be sexy forever!!!!
 
-Technical Details
+## Technical Details
+# Python-based age estimation
+# Trained on personal dataset (4 images, ages 21-22)
 
-Python-based age estimation
-Trained on personal dataset (4 images, ages 21-22)
-Privacy-focused approach
-Frontend coming soon
-Future Plans
-
-Medical school integration
-Telomere research
-Age-defying algorithms
-World domination through superior genetics and coding skills
+# Future Implementations
+Frontend 
+Age Guessing
