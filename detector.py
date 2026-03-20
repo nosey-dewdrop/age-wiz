@@ -6,6 +6,7 @@ from pathlib import Path
 import argparse
 
 DEFAULT_ENCODINGS_PATH = Path("output/encodings.pkl")
+SUPPORTED_EXTENSIONS = {'.jpg', '.jpeg', '.png'}
 BOUNDING_BOX_COLOR = "blue"
 TEXT_COLOR = "white"
 
@@ -31,7 +32,7 @@ def encode_known_faces(
             
             # for each image of the person
             for image_path in person_dir.glob("*"):
-                if image_path.suffix.lower() in ['.jpg', '.jpeg', '.png']:
+                if image_path.suffix.lower() in SUPPORTED_EXTENSIONS:
                     print(f"   processing {image_path.name}")
                     
                     # load the image
@@ -94,9 +95,13 @@ def recognize_faces(
         
         name = "unknown"
         if True in matches:
-            # get the first match
-            first_match_index = matches.index(True)
-            name = loaded_encodings["names"][first_match_index]
+            # pick the closest match by face distance
+            face_distances = face_recognition.face_distance(
+                loaded_encodings["encodings"], unknown_encoding
+            )
+            best_match_index = face_distances.argmin()
+            if matches[best_match_index]:
+                name = loaded_encodings["names"][best_match_index]
 
         print(f"   recognized person: {name}")
 
@@ -112,7 +117,7 @@ def validate(model: str = "hog"):
         return
     
     for image_path in validation_dir.glob("*"):
-        if image_path.suffix.lower() in ['.jpg', '.jpeg', '.png']:
+        if image_path.suffix.lower() in SUPPORTED_EXTENSIONS:
             print(f"\ntesting: {image_path.name}")
             recognize_faces(str(image_path), model)
 

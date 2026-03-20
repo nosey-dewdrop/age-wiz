@@ -15,4 +15,4 @@ training/
 validation/
 *.jpg
 *.jpeg
-*.pnggit push -f origin main
+*.png
