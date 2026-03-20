@@ -22,6 +22,45 @@ So after computer science, I'll be in medical school and not a single person wil
 - Python-based age estimation
 - Trained on personal dataset (4 images, ages 21-22)
 
+## How to Use
+
+### Setup
+```bash
+git clone https://github.com/nosey-dewdrop/age-wiz.git
+cd age-wiz
+pip install -r requirements.txt
+```
+
+> Note: `dlib` requires `cmake` to build. On macOS run `brew install cmake` first. On Ubuntu run `sudo apt install cmake`.
+
+### Train with your own photos
+Create folders under `training/` with the person's name. Put at least 2-3 clear face photos in each folder.
+```
+training/
+  john_25/
+    photo1.jpg
+    photo2.jpg
+  sarah_30/
+    photo1.jpg
+    photo2.jpg
+```
+
+Then train:
+```bash
+python detector.py --train
+```
+
+### Test
+```bash
+# test a single image
+python detector.py --test path/to/photo.jpg
+
+# test all images in the validation folder
+python detector.py --validate
+```
+
+You can also use `--model cnn` for more accurate results (slower, GPU recommended).
+
 ## Future Implementations
-Frontend 
+Frontend
 Age Guessing
